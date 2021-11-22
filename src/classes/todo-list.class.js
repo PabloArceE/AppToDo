@@ -32,10 +32,11 @@ export class TodoList{
         }
     }
 
-    // eliminar ctodos completados
+    // eliminar todos completados
 
+    // en este método se le aplica un filtro al array arrTodos que devuelve en un nuevo array los elementos que no estan completados y lo asigna al arrTodos, dejando de lado de esta manera, los elementos que ya han sido completados. En otras palabras elimina del arreglo los elementos que han sido completados. 
     eliminarCompletados(){
-        
+        this.arrTodos = this.arrTodos.filter( todo => !todo.completado);
     }
 
 

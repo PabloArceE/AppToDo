@@ -1,10 +1,12 @@
 import { Todo } from '../classes';
 import { todoList } from '../index';
 
+
 // referencias al Html
 
-const divTodoList = document.querySelector('.todo-list'); // selecciona el div que contiene la lista de todos en el html
-const txtInput    = document.querySelector('.new-todo'); // selecciona el input donde el usuario ingresa las nuevas tareas en el html
+const divTodoList    = document.querySelector('.todo-list'); // selecciona el div que contiene la lista de todos en el html
+const txtInput       = document.querySelector('.new-todo'); // selecciona el input donde el usuario ingresa las nuevas tareas en el html
+const clearCompleted = document.querySelector('.clear-completed'); // selección del botón borrar completados del html
 
 
 // crear elemento html
@@ -56,7 +58,8 @@ divTodoList.addEventListener('click', (event)=>{
 
     if(nombreElemento.includes('input')){
 
-        todoList.marcarCompletado(todoId);
+        todoList.marcarCompletado(todoId); 
+        todoElemento.classList.toggle('completed');     
 
     }else if(nombreElemento.includes('button')){
         
@@ -64,4 +67,20 @@ divTodoList.addEventListener('click', (event)=>{
         divTodoList.removeChild(todoElemento);
     }
    
+    console.log(todoList);
+    console.log(todoElemento);
+})
+
+//
+clearCompleted.addEventListener('click', ()=>{
+    todoList.eliminarCompletados();
+
+    for(let i =divTodoList.children.length-1; i >= 0; i--){
+        const element = divTodoList.children[i];
+        if (element.classList.contains('completed')){
+            divTodoList.removeChild(element);
+        }
+    }
+
+
 })
