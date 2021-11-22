@@ -44,10 +44,10 @@ module.exports = {
             
         }),
 
-        new CopyPlugin({
+        /* new CopyPlugin({
             patterns:[
                 
             ],
-        }),
+        }), */
     ]
 };

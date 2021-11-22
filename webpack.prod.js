@@ -1,6 +1,6 @@
 const HtmlWebPackPlugin    = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyPlugin           = require("copy-webpack-plugin");
+/* const CopyPlugin           = require("copy-webpack-plugin"); */
 const Minimizer            = require('css-minimizer-webpack-plugin');
 const Terser               = require('terser-webpack-plugin');
 
@@ -65,10 +65,10 @@ module.exports = {
             filename: '[name].[fullhash].css',
         }),
 
-        new CopyPlugin({
+       /*  new CopyPlugin({
             patterns:[
                 {from: 'src/assets/img', to: 'assets/img'}
             ],
-        }),        
+        }),         */
     ]
 };
