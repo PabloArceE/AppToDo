@@ -17,12 +17,19 @@ export class TodoList{
     // eliminar todo
     eliminarTodo(id){
 
+       this.arrTodos = this.arrTodos.filter( todo => todo.id != id); // se filtra el todo con el id pasado como argumeto y se lo asigna al array 
+
     }
 
     // marcar todo como completado
 
     marcarCompletado(id){
-
+        for(const todo of this.arrTodos){
+            if(todo.id == id){
+                todo.completado = !todo.completado;
+                break;
+            }
+        }
     }
 
     // eliminar ctodos completados
