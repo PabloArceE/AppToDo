@@ -4,6 +4,18 @@
 
 export class Todo{
 
+    // crear una instancia de Todo en base a objetos recuperados del local storage, utilizando la desestructuración de objetos para recuperar los atributos e incluirlos en la nueva instancia de Todo. Esto permite entonces obtener un objeto Todo con sus métodos y con los atributos recuperados del objeto almacenado en el local storage 
+    static fromJson({tarea, id, completado, creado }) {
+        const tempTodo = new Todo( tarea );
+
+        tempTodo.id         = id;
+        tempTodo.completado = completado;
+        tempTodo.creado     = creado;
+
+        return tempTodo;
+    }
+    // se supone que el objeto que se recibe desde el local storage posee el atributo tarea que se utilizará como argumento del constructor de la nueva instancia de tipo Todo
+
     constructor(tarea){
 
         this.tarea = tarea;

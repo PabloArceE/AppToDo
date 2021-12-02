@@ -1,12 +1,13 @@
 // Esta clase es creada con la finalidad de contener todas las tareas que se necesiten crear y almacenar utilizando un array
 // Posteriormente los objetos del array pueden ser manejados mediantes los métodos del mismo.
 
+import { Todo } from "./todo.class";
+
 export class TodoList{
 
     constructor(){
 
-        //this.arrTodos = [];
-        this.cargarLocalStorage();
+       this.cargarLocalStorage();
     }
 
     // agregar una tarea .push()
@@ -18,7 +19,8 @@ export class TodoList{
     // eliminar todo
     eliminarTodo(id){
 
-        this.arrTodos = this.arrTodos.filter( todo => todo.id != id); // se filtra el todo con el id pasado como argumeto y se lo asigna al array 
+        this.arrTodos = this.arrTodos.filter( todo => todo.id != id); 
+    // se filtra el todo con el id pasado como argumeto y se lo asigna al array 
         this.guardarLocalStorage();
     }
 
@@ -50,9 +52,12 @@ export class TodoList{
     cargarLocalStorage(){
 
     this.arrTodos = (localStorage.getItem('todo')) 
-                  ? this.arrTodos = JSON.parse(localStorage.getItem('todo')) 
+                  ? JSON.parse(localStorage.getItem('todo')) 
                   : [];
 
+    this.arrTodos = this.arrTodos.map(obj => Todo.fromJson(obj));
+   
+    // el método map() que poseen todos los arrays llama a una función definida en cada elemento del array, y retorna un nuevo array que contiene los resultados.    
     }
 
 }
