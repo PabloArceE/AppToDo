@@ -7,7 +7,8 @@ import { todoList } from '../index';
 const divTodoList    = document.querySelector('.todo-list'); // selecciona el div que contiene la lista de todos en el html
 const txtInput       = document.querySelector('.new-todo'); // selecciona el input donde el usuario ingresa las nuevas tareas en el html
 const clearCompleted = document.querySelector('.clear-completed'); // selección del botón borrar completados del html
-
+const ulFiltros      = document.querySelector('.filters'); // selecciona la ul con la clase filters
+const aFiltros       = document.querySelectorAll('.filtro'); // selecciona todos los elementos <a> con la clase filtros
 
 // crear elemento html
 
@@ -83,4 +84,30 @@ clearCompleted.addEventListener('click', ()=>{
     }
 
 
+})
+
+ulFiltros.addEventListener('click', (e) => {
+    const filtro = e.target.text;
+    if(!filtro){return;}
+
+    aFiltros.forEach(element => element.classList.remove('selected'));
+    e.target.classList.add('selected');
+
+    for(const elemento of divTodoList.children){
+        elemento.classList.remove('hidden');
+        const completado = elemento.classList.contains('completed');
+
+        switch(filtro){
+            case 'Pendientes':
+                if(completado){
+                    elemento.classList.add('hidden');
+                }
+            break;
+
+            case 'Completados':
+                if(!completado){
+                    elemento.classList.add('hidden');
+                }
+        }
+    }
 })
