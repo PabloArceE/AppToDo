@@ -55,7 +55,7 @@ export class TodoList{
                   ? JSON.parse(localStorage.getItem('todo')) 
                   : [];
 
-    this.arrTodos = this.arrTodos.map(obj => Todo.fromJson(obj));
+    this.arrTodos = this.arrTodos.map(Todo.fromJson);
    
     // el método map() que poseen todos los arrays llama a una función definida en cada elemento del array, y retorna un nuevo array que contiene los resultados.    
     }
